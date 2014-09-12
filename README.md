@@ -65,4 +65,10 @@ e.g.
 
 License and Authors
 -------------------
+
+This cookbook draws enormous inspiration from the [Typo3 Gerrit
+cookbook](https://github.com/TYPO3-cookbooks/gerrit).  As this was my first
+cookbook I borrowed liberally from their work and I want to thank them
+publically for publishing it!.
+
 Authors: TODO: List authors
