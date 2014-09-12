@@ -1,0 +1,30 @@
+<%# We need to handle commentlink seperately at the end. %>
+<% node['gerrit']['config'].select do |k, v|
+  # reject all attributes specified as part of the secure.config file
+  # this is not implemented through #reject, because of CHEF-4844
+  k != 'commentlink'
+end.each do |section, entries| %>
+[<%= section %>]
+  <% entries.each do |k,v| -%>
+    <% if v.is_a?(Hash) %>
+[<%= k %>]
+      <% v.each do |hash_key, hash_value| %>
+<%= hash_key %> = <%= hash_value %>
+      <% end -%>
+    <% else %>
+<%= k %> = <%= v %>
+    <% end -%>
+  <% end -%>
+
+<% end -%>
+<%# Here we handle commentlinks. %>
+<% if node['gerrit']['config']['commentlink'] -%>
+  <% node['gerrit']['config']['commentlink'].each do |k, v| %>
+    <% if v.is_a?(Hash) %>
+[commentlink "<%= k %>"]
+      <% v.each do |hash_key, hash_value| %>
+<%= hash_key %> = <%= hash_value %>
+      <% end -%>
+    <% end -%>
+  <% end -%>
+<% end -%>

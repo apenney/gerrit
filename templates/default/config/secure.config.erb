@@ -1,0 +1,7 @@
+<% node['gerrit']['secure_config'].each do |section, entries| %>
+[<%= section %>]
+<% entries.each do |k,v| -%>
+<%= k %> = "<%= v %>"
+
+<% end %>
+<% end %>
