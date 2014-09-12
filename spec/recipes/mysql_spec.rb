@@ -15,7 +15,7 @@ describe 'gerrit::default' do
         expect(chef_run).to install_package('test')
       end
       it 'creates a link' do
-        expect(chef_run).to create_link('/home/gerrit2/review_site/lib/mysql-connector-java.jar')
+        expect(chef_run).to create_link('/var/gerrit/review/lib/mysql-connector-java.jar')
       end
     end
   end
