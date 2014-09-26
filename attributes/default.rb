@@ -56,3 +56,6 @@ case node['platform']
 when 'debian', 'ubuntu'
   default['gerrit']['mysql-connector']['packages'] = ['libmysql-java']
 end
+
+# Need to create this so checks for subvalues don't fail if we don't create any.
+default['gerrit']['ssh'] = {}

@@ -57,6 +57,16 @@ if node['gerrit']['features']['ssh']
     group node['gerrit']['group']
     mode  '0700'
   end
+  cookbook_file 'authorized_keys' do
+    owner  node['gerrit']['user']
+    group  node['gerrit']['group']
+    mode   '0600'
+    action :create
+    path   "#{node['gerrit']['home']}/.ssh/authorized_keys"
+    if node['gerrit']['ssh']['cookbook']
+      cookbook node['gerrit']['ssh']['cookbook']
+    end
+  end
 end
 
 # Likewise, make sure we're ready for SSL certs.

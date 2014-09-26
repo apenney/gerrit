@@ -11,7 +11,7 @@ include_recipe 'git'
 include_recipe 'gerrit::install'
 include_recipe 'gerrit::config'
 
-if node['gerrit']['features']['proxy'] == true
+if node['gerrit']['features']['apache'] == true
   include_recipe 'gerrit::apache_proxy'
 end
 
